@@ -1,8 +1,9 @@
 const App = () => {
     return (
-        <div className="App">
-            <h1>test</h1>
-        </div>
+        <>
+            <h1>start</h1>
+            <p>적용하기</p>
+        </>
     );
 };
 
