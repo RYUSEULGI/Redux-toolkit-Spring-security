@@ -1,16 +1,16 @@
 import React from 'react';
-import '../style/Signup.css';
+import 'user/style/Signup.css';
 
 const Signup = () => {
     const url = '#';
     return (
         <>
             <form action="/action_page.php">
-                <div class="container">
+                <div className="container">
                     <h1>Sign Up</h1>
-                    <p>Please fill in this form to create an account.</p>
+                    <p>Please fill in this htmlForm to create an account.</p>
                     <hr />
-                    <label for="email">
+                    <label htmlFor="email">
                         <b>Email</b>
                     </label>
                     <input
@@ -19,7 +19,7 @@ const Signup = () => {
                         name="email"
                         required
                     />
-                    <label for="psw">
+                    <label htmlFor="psw">
                         <b>Password</b>
                     </label>
                     <input
@@ -28,7 +28,7 @@ const Signup = () => {
                         name="psw"
                         required
                     />
-                    <label for="psw-repeat">
+                    <label htmlFor="psw-repeat">
                         <b>Repeat Password</b>
                     </label>
                     <input
@@ -37,24 +37,15 @@ const Signup = () => {
                         name="psw-repeat"
                         required
                     />
-                    <label>
-                        <input
-                            type="checkbox"
-                            checked="checked"
-                            name="remember"
-                            style={{ marginBottom: '15px' }}
-                        />{' '}
-                        Remember me
-                    </label>
                     <p>
                         By creating an account you agree to our{' '}
                         <a href={url}>Terms & Privacy</a>.
                     </p>
-                    <div class="clearfix">
-                        <button type="button" class="cancelbtn">
+                    <div className="clearfix">
+                        <button type="button" className="cancelbtn">
                             Cancel
                         </button>
-                        <button type="submit" class="signupbtn">
+                        <button type="submit" className="signupbtn">
                             Sign Up
                         </button>
                     </div>

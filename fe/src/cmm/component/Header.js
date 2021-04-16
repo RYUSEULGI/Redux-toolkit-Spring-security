@@ -1,7 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
-    const url = '#';
     return (
         <nav className="navbar navbar-default">
             <div className="container">
@@ -23,22 +23,22 @@ const Header = () => {
                 <div className="collapse navbar-collapse" id="myNavbar">
                     <ul className="nav navbar-nav navbar-right">
                         <li>
-                            <a href="/login">Login</a>
+                            <Link to={'/login'}>LOGIN</Link>
                         </li>
                         <li>
-                            <a href="/signup">Signup</a>
+                            <Link to={'/signup'}>SIGNUP</Link>
                         </li>
                         <li>
-                            <a href={url}>WHO</a>
+                            <Link to={'#'}>WHO</Link>
                         </li>
                         <li>
-                            <a href={url}>WHAT</a>
+                            <Link to={'#'}>WHAT</Link>
                         </li>
                         <li>
-                            <a href={url}>WHERE</a>
+                            <Link to={'#'}>WHERE</Link>
                         </li>
                         <li>
-                            <a href="/board">Board</a>
+                            <Link to={'/news'}>NEWS</Link>
                         </li>
                     </ul>
                 </div>

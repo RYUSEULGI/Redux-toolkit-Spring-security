@@ -1,16 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import Footer from './cmm/component/Footer';
-import Header from './cmm/component/Header';
-import Home from './cmm/component/Home';
+import { BrowserRouter } from 'react-router-dom';
+import App from 'App';
 
 ReactDOM.render(
-    <div>
-        <Header />
-        <Home />
+    <BrowserRouter>
         <App />
-        <Footer />
-    </div>,
+    </BrowserRouter>,
     document.getElementById('root')
 );

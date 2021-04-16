@@ -1,9 +1,9 @@
 import React from 'react';
-import Contents from './Contents';
-import Profile from './Profile';
-import Search from './Search';
-import '../style/Home.css';
-import '../style/Common.css';
+import Contents from 'cmm/component/Contents';
+import Profile from 'cmm/component/Profile';
+import Search from 'cmm/component/Search';
+import 'cmm/style/Home.css';
+import 'cmm/style/Common.css';
 
 const Home = () => (
     <>
