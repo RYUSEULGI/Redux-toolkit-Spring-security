@@ -1,10 +1,9 @@
 import React from 'react';
-import ArticleList from 'article/component/ArticleList';
+import { ArticleList } from 'article';
 
 const News = () => {
     return (
         <>
-            <h2>뉴스게시판</h2>
             <ArticleList />
         </>
     );

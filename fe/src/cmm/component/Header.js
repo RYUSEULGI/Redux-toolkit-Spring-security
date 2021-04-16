@@ -40,6 +40,9 @@ const Header = () => {
                         <li>
                             <Link to={'/news'}>NEWS</Link>
                         </li>
+                        <li>
+                            <Link to={'/board/seoul-cctv'}>서울시CCTV</Link>
+                        </li>
                     </ul>
                 </div>
             </div>
