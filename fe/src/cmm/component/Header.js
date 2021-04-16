@@ -16,12 +16,18 @@ const Header = () => {
                         <span className="icon-bar"></span>
                         <span className="icon-bar"></span>
                     </button>
-                    <a className="navbar-brand" href={url}>
+                    <a className="navbar-brand" href="/">
                         Me
                     </a>
                 </div>
                 <div className="collapse navbar-collapse" id="myNavbar">
                     <ul className="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="/login">Login</a>
+                        </li>
+                        <li>
+                            <a href="/signup">Signup</a>
+                        </li>
                         <li>
                             <a href={url}>WHO</a>
                         </li>
@@ -32,7 +38,7 @@ const Header = () => {
                             <a href={url}>WHERE</a>
                         </li>
                         <li>
-                            <a href={url}>Board</a>
+                            <a href="/board">Board</a>
                         </li>
                     </ul>
                 </div>

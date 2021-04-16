@@ -1,5 +1,5 @@
 import React from 'react';
-import './style/Login.css';
+import '../style/Login.css';
 
 const Login = () => {
     const url = '#';
@@ -8,7 +8,7 @@ const Login = () => {
             <form action="action_page.php" method="post">
                 <div class="imgcontainer">
                     <img
-                        src="https://www.w3schools.com/howto/img_avatar2.png"
+                        src="https://images.velog.io/images/s_keyyy/post/dfe40784-0b7a-41a7-8c9a-865e2f7d1e78/KakaoTalk_Photo_2021-04-16-11-39-13.jpeg"
                         alt="Avatar"
                         class="avatar"
                     />
@@ -38,7 +38,7 @@ const Login = () => {
                             type="checkbox"
                             checked="checked"
                             name="remember"
-                        />{' '}
+                        />
                         Remember me
                     </label>
                 </div>

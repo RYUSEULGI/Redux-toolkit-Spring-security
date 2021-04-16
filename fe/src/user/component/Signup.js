@@ -1,5 +1,5 @@
 import React from 'react';
-import './style/SignUpCss.css';
+import '../style/Signup.css';
 
 const Signup = () => {
     const url = '#';
