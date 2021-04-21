@@ -29,7 +29,7 @@ const Header = () => {
                             <Link to={'/signup'}>SIGNUP</Link>
                         </li>
                         <li>
-                            <Link to={'/counter'}>카운터</Link>
+                            <Link to={'/todo'}>TODO</Link>
                         </li>
                         <li>
                             <Link to={'#'}>WHAT</Link>

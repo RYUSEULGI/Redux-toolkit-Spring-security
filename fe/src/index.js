@@ -1,15 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-import store from 'app/store';
-import { Provider } from 'react-redux';
 import App from 'App';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { combineReducers } from 'redux';
+import { configureStore } from '@reduxjs/toolkit';
+import { todoReducer } from 'todo/reducer/todo.reducer';
+
+// const rootReducer = combineReducers({ todoReducer });
+
+// const store = configureStore({
+//     reducer: rootReducer,
+// });
 
 ReactDOM.render(
+    // <Provider store={store}>
     <BrowserRouter>
-        <Provider store={store}>
-            <App />
-        </Provider>
+        <App />
     </BrowserRouter>,
+    // </Provider>,
     document.getElementById('root')
 );
