@@ -5,15 +5,15 @@ const Login = () => {
     const url = '#';
     return (
         <>
-            <form action="action_page.php" method="post">
-                <div class="imgcontainer">
+            <form action="" method="post" className="login-form">
+                <div className="imgcontainer">
                     <img
                         src="https://images.velog.io/images/s_keyyy/post/dfe40784-0b7a-41a7-8c9a-865e2f7d1e78/KakaoTalk_Photo_2021-04-16-11-39-13.jpeg"
                         alt="Avatar"
-                        class="avatar"
+                        className="avatar"
                     />
                 </div>
-                <div class="container">
+                <div className="container">
                     <label for="uname">
                         <b>Username</b>
                     </label>
@@ -42,11 +42,11 @@ const Login = () => {
                         Remember me
                     </label>
                 </div>
-                <div class="container">
-                    <button type="button" class="cancelbtn">
+                <div className="container">
+                    <button type="button" className="cancelbtn">
                         Cancel
                     </button>
-                    <span class="psw">
+                    <span className="psw">
                         Forgot <a href={url}>password?</a>
                     </span>
                 </div>

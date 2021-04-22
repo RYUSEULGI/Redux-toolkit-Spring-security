@@ -5,7 +5,7 @@ const Signup = () => {
     const url = '#';
     return (
         <>
-            <form action="/action_page.php">
+            <form action="" className="signup-form">
                 <div className="container">
                     <h1>Sign Up</h1>
                     <p>Please fill in this htmlForm to create an account.</p>

@@ -1,46 +1,18 @@
 import React from 'react';
-import 'todo/style/Todo.css';
+import { DeleteTodo, EditTodo } from 'todo/index';
 
-const Todo = () => {
-    return (
-        <>
-            <div class="todo-container">
-                <p>
-                    <label htmlFor="new-task">Add Item</label>
-                    <input id="new-task" type="text" />
-                    <button>Add</button>
-                </p>
-                <h3>Todo</h3>
-                <ul id="incomplete-tasks">
-                    <li>
-                        <input type="checkbox" />
-                        <label>Pay Bills</label>
-                        <input type="text" />
-                        <button class="edit">Edit</button>
-                        <button class="delete">Delete</button>
-                    </li>
-                    <li class="editMode">
-                        <input type="checkbox" />
-                        <label>Go Shopping</label>
-                        <input type="text" value="Go Shopping" />
-                        <button class="edit">Edit</button>
-                        <button class="delete">Delete</button>
-                    </li>
-                </ul>
-
-                <h3>Completed</h3>
-                <ul id="completed-tasks">
-                    <li>
-                        <input type="checkbox" checked="" />
-                        <label>See the Doctor</label>
-                        <input type="text" />
-                        <button class="edit">Edit</button>
-                        <button class="delete">Delete</button>
-                    </li>
-                </ul>
-            </div>
-        </>
-    );
-};
+const Todo = ({ todo }) => (
+    <>
+        <ul id="incomplete-tasks">
+            <li>
+                <input type="checkbox" />
+                <label>{todo.text}</label>
+                <input value={todo.text} type="text" />
+                <EditTodo />
+                <DeleteTodo />
+            </li>
+        </ul>
+    </>
+);
 
 export default Todo;
