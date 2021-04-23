@@ -8,7 +8,7 @@ const DoneTodo = () => {
             <ul id="completed-tasks">
                 <li>
                     <input type="checkbox" checked="" />
-                    <label>See the Doctor</label>
+                    <label>{}</label>
                     <input type="text" />
                     <EditTodo />
                     <DeleteTodo />

@@ -113,3 +113,6 @@
 .todo-container ul li.editMode label {
     display: none;
 }
+.todo-container .all-delete-btn {
+    width: 100px;
+}

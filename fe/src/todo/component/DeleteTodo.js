@@ -1,15 +1,20 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteTodo } from 'todo/features/todo.slice';
 
 const DeleteTodo = () => {
-    // const todos = useSelector((state) => state.todoReducer.todos);
+    const dispatch = useDispatch();
 
-    // const deleteTask = () => {
-    //     dispatch(deleteTodo(id));
-    // };
+    const todo = useSelector((state) => state.todoSlice.todolist);
 
     return (
         <>
-            <button className="delete">Delete</button>
+            <button
+                onClick={() => dispatch(deleteTodo(todo.id))}
+                className="delete"
+            >
+                Delete
+            </button>
         </>
     );
 };
