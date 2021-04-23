@@ -1,18 +1,15 @@
 import React from 'react';
 
 const DeleteTodo = () => {
-    const deleteTask = () => {
-        console.log('Delete Task...');
-        const listItem = this.parentNode;
-        const ul = listItem.parentNode;
-        ul.removeChild(listItem);
-    };
+    // const todos = useSelector((state) => state.todoReducer.todos);
+
+    // const deleteTask = () => {
+    //     dispatch(deleteTodo(id));
+    // };
 
     return (
         <>
-            <button className="delete" onClick={deleteTask}>
-                Delete
-            </button>
+            <button className="delete">Delete</button>
         </>
     );
 };
