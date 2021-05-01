@@ -6,8 +6,9 @@ import { Provider } from 'react-redux';
 import { combineReducers } from 'redux';
 import { configureStore } from '@reduxjs/toolkit';
 import todoSlice from 'todo/features/todo.slice';
+import articleSlice from 'article/features/article.slice';
 
-const rootReducer = combineReducers({ todoSlice });
+const rootReducer = combineReducers({ todoSlice, articleSlice });
 
 const store = configureStore({
     reducer: rootReducer,

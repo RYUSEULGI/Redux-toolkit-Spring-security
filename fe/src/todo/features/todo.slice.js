@@ -9,7 +9,11 @@ const todoSlice = createSlice({
     name: 'todoSlice',
     initialState,
     reducers: {
-        editTodo(state, { payload }) {},
+        editTodo(state, { payload }) {
+            console.log('edit todo');
+            const editId = state.todolist.find((todo) => todo.id === payload);
+            editId.text = payload.text;
+        },
         addTodo(state, { payload }) {
             state.todolist.push({ id: uuid(), text: payload, done: false });
         },

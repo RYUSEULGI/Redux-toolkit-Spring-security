@@ -32,7 +32,7 @@ const Header = () => {
                             <Link to={'/todo'}>TODO</Link>
                         </li>
                         <li>
-                            <Link to={'#'}>WHAT</Link>
+                            <Link to={'/board/article'}>BOARD</Link>
                         </li>
                         <li>
                             <Link to={'#'}>WHERE</Link>

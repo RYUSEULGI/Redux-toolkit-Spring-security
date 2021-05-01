@@ -1,47 +1,59 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import 'article/style/ArticleList.css';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+    getArticle,
+    selectArticle,
+    articleDelete,
+} from 'article/features/article.slice';
 
 const ArticleList = () => {
+    const dispatch = useDispatch();
+    const data = useSelector(selectArticle);
+
+    console.log(data);
+    useEffect(() => {
+        dispatch(getArticle);
+    }, [dispatch]);
+
+    const handleDelete = () => {
+        console.log('delete');
+        dispatch(articleDelete);
+    };
+    const handleDetail = () => {
+        console.log('detail');
+    };
+
     return (
         <>
             <div className="container">
-                <a href="/board/write">글쓰기</a>
                 <table>
                     <tr>
-                        <th className="table-ttl">Company</th>
-                        <th className="table-ttl">Contact</th>
-                        <th className="table-ttl">Country</th>
+                        <th className="table-ttl">제목</th>
+                        <th className="table-ttl">작성자</th>
+                        <th className="table-ttl">내용</th>
+                        <th className="table-ttl">삭제</th>
+                        <th className="table-ttl">디테일</th>
                     </tr>
-                    <tr>
-                        <td>Alfreds Futterkiste</td>
-                        <td>Maria Anders</td>
-                        <td>Germany</td>
-                    </tr>
-                    <tr>
-                        <td>Centro comercial Moctezuma</td>
-                        <td>Francisco Chang</td>
-                        <td>Mexico</td>
-                    </tr>
-                    <tr>
-                        <td>Ernst Handel</td>
-                        <td>Roland Mendel</td>
-                        <td>Austria</td>
-                    </tr>
-                    <tr>
-                        <td>Island Trading</td>
-                        <td>Helen Bennett</td>
-                        <td>UK</td>
-                    </tr>
-                    <tr>
-                        <td>Laughing Bacchus Winecellars</td>
-                        <td>Yoshi Tannamuri</td>
-                        <td>Canada</td>
-                    </tr>
-                    <tr>
-                        <td>Magazzini Alimentari Riuniti</td>
-                        <td>Giovanni Rovelli</td>
-                        <td>Italy</td>
-                    </tr>
+                    {data.map((article) => {
+                        return (
+                            <tr key={article.id}>
+                                <td>{article.title}</td>
+                                <td>{article.writer}</td>
+                                <td>{article.content}</td>
+                                <td>
+                                    <button onClick={handleDelete}>
+                                        Delete
+                                    </button>
+                                </td>
+                                <td td>
+                                    <button onClick={handleDetail}>
+                                        Detail
+                                    </button>
+                                </td>
+                            </tr>
+                        );
+                    })}
                 </table>
             </div>
         </>

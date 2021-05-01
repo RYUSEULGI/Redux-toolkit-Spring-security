@@ -1,6 +1,10 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { selectArticle } from 'article/features/article.slice';
 
 const ArticleDetail = () => {
+    const data = useSelector(selectArticle);
+
     return (
         <>
             <div className="container">
@@ -11,39 +15,18 @@ const ArticleDetail = () => {
                     <tbody>
                         <tr>
                             <th>제목 : </th>
-                            <td></td>
+                            <td>{data.title}</td>
                         </tr>
                         <tr>
                             <th>작성 일자 : </th>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th>조회수 : </th>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th>작성자 : </th>
-                            <td></td>
+                            <td>{data.writer}</td>
                         </tr>
                         <tr>
                             <th>내용 : </th>
-                            <td></td>
+                            <td>{data.content}</td>
                         </tr>
                     </tbody>
                 </table>
-                <a
-                    className="btn btn-outline-primary"
-                    id="update_btn"
-                    href="/test/notice_board/update_write?idx=<?php echo $index;?>"
-                >
-                    수정하기
-                </a>
-                <input
-                    type="button"
-                    className="btn btn-outline-primary"
-                    id="delete_btn"
-                    value="삭제하기"
-                />
             </div>
         </>
     );

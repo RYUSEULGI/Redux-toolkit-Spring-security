@@ -1,7 +1,7 @@
 import { Route } from 'react-router';
 import { Home, Footer, Header, Search, Contents } from 'cmm/index';
 import { Login, Signup, UserDetail } from 'user/index';
-import { ArticleDetail, ArticleWrite } from 'article/index';
+import { ArticleApp, ArticleDetail, ArticleWrite } from 'article/index';
 import { News, Seoul_cctv } from 'board/index';
 import { TodoApp } from 'todo/index';
 
@@ -16,6 +16,7 @@ const App = () => {
             <Route exact path="/todo" component={TodoApp} />
             <Route exact path="/contents" component={Contents} />
             <Route exact path="/user/detail" component={UserDetail} />
+            <Route exact path="/board/article" component={ArticleApp} />
             <Route exact path="/board/news" component={News} />
             <Route exact path="/board/seoul-cctv" component={Seoul_cctv} />
             <Route exact path="/article/write" component={ArticleWrite} />
