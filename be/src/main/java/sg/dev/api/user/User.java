@@ -1,22 +1,31 @@
 package sg.dev.api.user;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.Size;
+import java.util.List;
 
 @Entity
+@Table(name = "users")
 public class User {
 
     @Id
+    @GeneratedValue
     @Column(name="user_id")
-    private long id;
+    private long userId;
 
-    @Column(name="username")
+    @Column(nullable = false, unique = true)
     private String username;
 
-    @Column(name="password")
+    @Column(nullable = false)
+    @Size(min=8, message = "8자리 이상 입력하세요")
     private String password;
 
-    @Column(name="email")
+    @Column(nullable = false, unique = true)
     private String email;
+
+    @Column(nullable = false)
+    private String name;
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    List<Role> roles;
 }
