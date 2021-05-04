@@ -6,9 +6,9 @@ import org.springframework.http.HttpStatus;
 
 @Getter
 @RequiredArgsConstructor
-public class SecurityRunnerException extends RuntimeException{
+public class SecurityRuntimeException extends RuntimeException{
     private static final long SerializableUID = 1L;
 
     private final String msg;
-    private final HttpStatus status;
+    private final HttpStatus httpStatus;
 }

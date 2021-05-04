@@ -1,9 +1,12 @@
 package sg.dev.api.user;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.List;
 
+@Data
 @Entity
 @Table(name = "users")
 public class User {

@@ -1,4 +1,4 @@
-package sg.dev.api.cmm;
+package sg.dev.api.cmm.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

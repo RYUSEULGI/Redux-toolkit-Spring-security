@@ -3,28 +3,40 @@ package sg.dev.api.user;
 import io.swagger.annotations.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
+import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
 @Log @Api(tags = "users")
-@RestController
 @RequestMapping(name="users")
 @RequiredArgsConstructor
+@RestController
 public class UserController {
 
     private final UserServiceImpl userService;
+    private final ModelMapper modelMapper;
 
-    @GetMapping("/signup")
+    @PostMapping("/signup")
     @ApiOperation(value="${UserController.signup}")
     @ApiResponses(value={
             @ApiResponse(code=400, message = "something wrong"),
             @ApiResponse(code=403, message = "승인거절"),
             @ApiResponse(code=422, message = "중복된 username")})
-    public ResponseEntity<Long> signup(@ApiParam("Signup user") @RequestBody UserDto userDto){
-        return ResponseEntity.ok(userService.signup(userDto));
+    public ResponseEntity<String> signup(@ApiParam("Signup user") @RequestBody UserDto userDto){
+        return ResponseEntity.ok(userService.signup(modelMapper.map(userDto, User.class)));
     }
 
-    @PostMapping("/signup")
+    @PostMapping("/signin")
+    @ApiOperation(value="${UserController.signin}")
+    @ApiResponses(value={
+            @ApiResponse(code=400, message = "something wrong"),
+            @ApiResponse(code=422, message = "유효하지 않은 아이디 / 비밀번호")})
+    public ResponseEntity<UserDto> signin(@RequestBody UserDto userDto){
+        return ResponseEntity.ok(userService.signin(modelMapper.map(userDto, User.class)));
+    }
+
+    @PostMapping("")
     public ResponseEntity<Long> join(@RequestBody User user) throws Exception {
         return ResponseEntity.ok(null);
     }

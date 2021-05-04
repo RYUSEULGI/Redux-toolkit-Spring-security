@@ -4,7 +4,6 @@ import sg.dev.api.article.Article;
 import sg.dev.api.item.Item;
 
 import javax.persistence.*;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
