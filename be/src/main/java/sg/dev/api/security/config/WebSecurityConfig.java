@@ -39,21 +39,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.csrf().disable();
-        httpSecurity.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        httpSecurity.authorizeRequests()
-                .antMatchers("/users/signup").permitAll()
+    protected void configure(HttpSecurity http) throws Exception {
+        http.csrf().disable();
+        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        http.authorizeRequests()
                 .antMatchers("/users/signin").permitAll()
+                .antMatchers("/users/signup").permitAll()
+                .antMatchers("/h2-console/**/**").permitAll()
                 .anyRequest().authenticated();
-        httpSecurity.exceptionHandling().accessDeniedPage("/login");
-        httpSecurity.apply(new SecurityConfig(provider));
+        http.exceptionHandling().accessDeniedPage("/login");
+        http.apply(new SecurityConfig(provider));
     }
 
     @Override
-    public void configure(WebSecurity webSecurity) throws Exception{
-        webSecurity.ignoring()
+    public void configure(WebSecurity web) throws Exception{
+        web.ignoring()
                 .antMatchers(HttpMethod.OPTIONS, "*/**")
-                .antMatchers("/","/h2-console/**");
+                .antMatchers("/", "/h2-console/**");
     }
 }

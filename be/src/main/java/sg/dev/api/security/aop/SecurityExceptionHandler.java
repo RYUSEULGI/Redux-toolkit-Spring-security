@@ -3,11 +3,11 @@ package sg.dev.api.security.aop;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.InsufficientAuthenticationException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import java.nio.file.AccessDeniedException;
 import sg.dev.api.security.domain.Messenger;
 import sg.dev.api.security.exception.ErrorCode;
 import sg.dev.api.security.exception.LoginRunnerException;
@@ -25,7 +25,7 @@ public class SecurityExceptionHandler {
                 .message(e.getMessage())
                 .status(HttpStatus.INTERNAL_SERVER_ERROR.value())
                 .build();
-        return new ResponseEntity<Messenger>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(SecurityException.class)
@@ -37,7 +37,7 @@ public class SecurityExceptionHandler {
                 .message(e.getMessage())
                 .status(ErrorCode.AUTHENTICATION_FAILED.getStatus())
                 .build();
-        return new ResponseEntity<Messenger>(response, HttpStatus.UNAUTHORIZED);
+        return new ResponseEntity<>(response, HttpStatus.UNAUTHORIZED);
     }
 
     @ExceptionHandler(LoginRunnerException.class)
@@ -49,7 +49,7 @@ public class SecurityExceptionHandler {
                 .message(ErrorCode.LOGIN_FAILED.getMsg())
                 .status(ErrorCode.LOGIN_FAILED.getStatus())
                 .build();
-        return new ResponseEntity<Messenger>(response, HttpStatus.UNAUTHORIZED);
+        return new ResponseEntity<>(response, HttpStatus.UNAUTHORIZED);
     }
 
     @ExceptionHandler(BadCredentialsException.class)
@@ -61,7 +61,7 @@ public class SecurityExceptionHandler {
                 .message(ErrorCode.ACCESS_DENIED.getMsg())
                 .status(ErrorCode.ACCESS_DENIED.getStatus())
                 .build();
-        return new ResponseEntity<Messenger>(response, HttpStatus.UNAUTHORIZED);
+        return new ResponseEntity<>(response, HttpStatus.UNAUTHORIZED);
     }
 
     @ExceptionHandler(AccessDeniedException.class)
@@ -73,7 +73,7 @@ public class SecurityExceptionHandler {
                 .message(ErrorCode.ACCESS_DENIED.getMsg())
                 .status(ErrorCode.ACCESS_DENIED.getStatus())
                 .build();
-        return new ResponseEntity<Messenger>(response, HttpStatus.UNAUTHORIZED);
+        return new ResponseEntity<>(response, HttpStatus.UNAUTHORIZED);
     }
 
     @ExceptionHandler(InsufficientAuthenticationException.class)
@@ -85,6 +85,6 @@ public class SecurityExceptionHandler {
                 .message(ErrorCode.AUTHENTICATION_FAILED.getMsg())
                 .status(ErrorCode.AUTHENTICATION_FAILED.getStatus())
                 .build();
-        return new ResponseEntity<Messenger>(response, HttpStatus.UNAUTHORIZED);
+        return new ResponseEntity<>(response, HttpStatus.UNAUTHORIZED);
     }
 }

@@ -7,11 +7,12 @@ import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 
-@Log @Api(tags = "users")
-@RequestMapping(name="users")
-@RequiredArgsConstructor
-@RestController
+
+@Log
+@Api(tags="users") @RequiredArgsConstructor
+@RestController @RequestMapping("/users")
 public class UserController {
 
     private final UserServiceImpl userService;
@@ -52,18 +53,18 @@ public class UserController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<?> all(@PathVariable String username){
+    public ResponseEntity<List<User>> all(){
         log.info("모두 접근가능");
         return ResponseEntity.ok(null);
     }
 
-    @GetMapping("/{username}")
+    @PostMapping("/{username}")
     public ResponseEntity<?> auth(@PathVariable String username){
         log.info("로그인한 사용자만 접근 가능");
         return ResponseEntity.ok(null);
     }
 
-    @GetMapping("/admin")
+    @PostMapping("/admin")
     public ResponseEntity<?> admin(){
         log.info("관리자만 접근 가능");
         return ResponseEntity.ok(null);
