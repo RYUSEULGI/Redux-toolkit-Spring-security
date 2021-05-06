@@ -42,6 +42,11 @@ public class UserController {
         return ResponseEntity.ok(null);
     }
 
+    @GetMapping("/fetch")
+    public ResponseEntity<List<User>> fetchAll(){
+        return ResponseEntity.ok(userService.findAll());
+    }
+
     @PutMapping("")
     public ResponseEntity<Long> update(@RequestBody User user){
         return ResponseEntity.ok(null);

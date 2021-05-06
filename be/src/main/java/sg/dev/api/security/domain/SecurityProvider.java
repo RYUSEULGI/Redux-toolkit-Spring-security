@@ -5,6 +5,7 @@ import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -21,6 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 import java.util.stream.Collectors;
 
+@Log
 @Component
 @RequiredArgsConstructor
 public class SecurityProvider implements AuthenticationProvider {
@@ -46,13 +48,17 @@ public class SecurityProvider implements AuthenticationProvider {
     @PostConstruct
     protected void init(){
         secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
+        log.info("secretKEy" + secretKey);
     }
 
     public String createToken(String username, List<Role> roles){
+        log.info("createToken 들어옴------------------");
         Claims claims = Jwts.claims().setSubject(username);
+        log.info("--------------------claims" + claims);
         claims.put("auth", roles.stream().map(s -> new SimpleGrantedAuthority(s.getAuthority()))
                 .filter(Objects::nonNull).collect(Collectors.toList()));
 
+        log.info("claim--------" + claims);
         Date now = new Date();
         Date validity = new Date(now.getTime() + validityInMs);
 
@@ -60,8 +66,9 @@ public class SecurityProvider implements AuthenticationProvider {
                 .setClaims(claims)
                 .setIssuedAt(now)
                 .setExpiration(validity)
-                .signWith(SignatureAlgorithm.ES256, secretKey.getBytes())
+                .signWith(SignatureAlgorithm.HS256, secretKey)
                 .compact();
+
     }
 
     public Authentication getAuthentication(String token){

@@ -47,9 +47,15 @@ public class UserServiceImpl implements UserService{
             String token = provider.createToken(user.getUsername(), userRepo.findByUsername(user.getUsername()).getRoles());
             log.info("*******ISSUED TOKEN********", token);
             userDto.setToken(token);
+
             return userDto;
         }catch(Exception e){
             throw new SecurityRuntimeException("유효하지 않은 아이디 / 비밀번호", HttpStatus.UNPROCESSABLE_ENTITY);
         }
+    }
+
+    @Override
+    public List<User> findAll() {
+        return userRepo.findAll();
     }
 }
