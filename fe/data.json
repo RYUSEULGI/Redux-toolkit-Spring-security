@@ -1,0 +1,54 @@
+{
+    "users": [
+        {
+            "userId": 1,
+            "username": "111",
+            "password": "$2a$10$plpL.L6bOs/y/uXQRHbxaOnvUKalb4/zVgIXFCMHvYbfNJF/SYTCK",
+            "email": "111@naver.com",
+            "name": "111",
+            "roles": [
+                "USER"
+            ]
+        },
+        {
+            "userId": 2,
+            "username": "222",
+            "password": "$2a$10$mAGNv8Pd8zsw.3QUe67Tpedsh25IszHayaeD7ca9K8z6lhYZStPo2",
+            "email": "222@naver.com",
+            "name": "222",
+            "roles": [
+                "USER"
+            ]
+        },
+        {
+            "userId": 3,
+            "username": "333",
+            "password": "$2a$10$BmVqHIdb3ds/8INKW7tp8ungigN8DCN.8HwYhFvcwLA5fD9Rnza4m",
+            "email": "333@naver.com",
+            "name": "333",
+            "roles": [
+                "USER"
+            ]
+        },
+        {
+            "userId": 4,
+            "username": "444",
+            "password": "$2a$10$UU9eBbwyYLxV1g8Jp0L4euzuVlERHPvljBoanDUd7Yhs7XUtiFq9K",
+            "email": "444@naver.com",
+            "name": "444",
+            "roles": [
+                "USER"
+            ]
+        },
+        {
+            "userId": 5,
+            "username": "555",
+            "password": "$2a$10$PIfuczXSlRVqbs6cfUFxaeIHrgIiavzPAVIWsKHsTbO2YpzHb531O",
+            "email": "555@naver.com",
+            "name": "555",
+            "roles": [
+                "USER"
+            ]
+        }
+    ]
+}

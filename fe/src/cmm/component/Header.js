@@ -35,7 +35,7 @@ const Header = () => {
                             <Link to={'/board/article'}>BOARD</Link>
                         </li>
                         <li>
-                            <Link to={'#'}>WHERE</Link>
+                            <Link to={'/users/list'}>USERS</Link>
                         </li>
                         <li>
                             <Link to={'/news'}>NEWS</Link>

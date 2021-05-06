@@ -15,11 +15,11 @@ const Login = () => {
                 </div>
                 <div className="container">
                     <label for="uname">
-                        <b>Username</b>
+                        <b>ID</b>
                     </label>
                     <input
                         type="text"
-                        placeholder="Enter Username"
+                        placeholder="Enter ID"
                         name="uname"
                         required
                     />
@@ -33,19 +33,8 @@ const Login = () => {
                         required
                     />
                     <button type="submit">Login</button>
-                    <label>
-                        <input
-                            type="checkbox"
-                            checked="checked"
-                            name="remember"
-                        />
-                        Remember me
-                    </label>
                 </div>
                 <div className="container">
-                    <button type="button" className="cancelbtn">
-                        Cancel
-                    </button>
                     <span className="psw">
                         Forgot <a href={url}>password?</a>
                     </span>

@@ -2,21 +2,22 @@ import React from 'react';
 import 'user/style/Signup.css';
 
 const Signup = () => {
-    const url = '#';
+    const handleSubmit = () => {};
+
     return (
         <>
-            <form action="" className="signup-form">
+            <form onSubmit={handleSubmit} action="" className="signup-form">
                 <div className="container">
-                    <h1>Sign Up</h1>
+                    <h1>회원가입</h1>
                     <p>Please fill in this htmlForm to create an account.</p>
                     <hr />
-                    <label htmlFor="email">
-                        <b>Email</b>
+                    <label htmlFor="id">
+                        <b>ID</b>
                     </label>
                     <input
                         type="text"
-                        placeholder="Enter Email"
-                        name="email"
+                        placeholder="Enter ID"
+                        name="id"
                         required
                     />
                     <label htmlFor="psw">
@@ -37,10 +38,24 @@ const Signup = () => {
                         name="psw-repeat"
                         required
                     />
-                    <p>
-                        By creating an account you agree to our{' '}
-                        <a href={url}>Terms & Privacy</a>.
-                    </p>
+                    <label htmlFor="email">
+                        <b>Email</b>
+                    </label>
+                    <input
+                        type="text"
+                        placeholder="Enter Email"
+                        name="email"
+                        required
+                    />
+                    <label htmlFor="Name">
+                        <b>Name</b>
+                    </label>
+                    <input
+                        type="text"
+                        placeholder="Enter Name"
+                        name="name"
+                        required
+                    />
                     <div className="clearfix">
                         <button type="button" className="cancelbtn">
                             Cancel
