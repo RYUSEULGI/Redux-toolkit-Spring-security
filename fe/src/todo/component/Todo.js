@@ -8,7 +8,7 @@ const Todo = ({ todo }) => {
     const handleEdit = () => {
         const edit = document.getElementsByClassName('edit');
         edit.classList.add('editMode');
-        // dispatch(editTodo(todo.id));
+        dispatch(editTodo(todo.id));
     };
 
     return (

@@ -12,9 +12,9 @@ const App = () => {
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
-            <Route exact path="/users/list" component={UserList} />
             <Route exact path="/todo" component={TodoApp} />
             <Route exact path="/contents" component={Contents} />
+            <Route exact path="/users/list" component={UserList} />
             <Route exact path="/user/detail" component={UserDetail} />
             <Route exact path="/board/article" component={ArticleApp} />
             <Route exact path="/board/news" component={News} />

@@ -11,6 +11,7 @@ import java.util.List;
 
 
 @Log
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @Api(tags="users") @RequiredArgsConstructor
 @RestController @RequestMapping("/users")
 public class UserController {
@@ -42,7 +43,7 @@ public class UserController {
         return ResponseEntity.ok(null);
     }
 
-    @GetMapping("/fetch")
+    @GetMapping("/findAll")
     public ResponseEntity<List<User>> fetchAll(){
         return ResponseEntity.ok(userService.findAll());
     }

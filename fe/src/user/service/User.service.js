@@ -1,10 +1,8 @@
 import axios from 'axios';
 
-const API_URL = '/data/users.json';
+const SERVER = 'http://localhost:8080/users';
 
-const userList = () => {
-    axios
-        .get(API_URL)
-        .then((res) => console.log(res))
-        .catch((err) => console.log(err));
-};
+const getList = () => axios.get(`${SERVER}/findAll`);
+const siginin = () => axios.post(`${SERVER}/signup`, {});
+
+export default { getList, siginin };

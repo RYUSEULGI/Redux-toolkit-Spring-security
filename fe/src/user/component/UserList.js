@@ -1,18 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserList, selectUsers } from 'user/features/user.slice';
 
 const UserList = () => {
-    const [users, setUsers] = useState([]);
+    const dispatch = useDispatch();
+
+    const users = useSelector(selectUsers);
 
     useEffect(() => {
-        axios
-            .get('/data/users.json')
-            .then((res) => {
-                setUsers(res.data);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+        dispatch(getUserList());
     }, []);
 
     return (
