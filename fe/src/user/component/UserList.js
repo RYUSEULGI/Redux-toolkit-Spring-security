@@ -9,7 +9,7 @@ const UserList = () => {
 
     useEffect(() => {
         dispatch(getUserList());
-    }, []);
+    }, [dispatch]);
 
     return (
         <>

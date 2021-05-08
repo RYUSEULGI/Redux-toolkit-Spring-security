@@ -1,15 +1,45 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { userSignup } from 'user/features/user.slice';
+import { unwrapResult } from '@reduxjs/toolkit';
 import 'user/style/Signup.css';
+import { useHistory } from 'react-router';
 
 const Signup = () => {
-    const handleSubmit = () => {};
+    const dispatch = useDispatch();
+    const history = useHistory();
+
+    const [userInfo, setUserInfo] = useState({
+        username: '',
+        password: '',
+        email: '',
+        name: '',
+    });
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        dispatch(userSignup(userInfo)).then(unwrapResult);
+        alert('회원가입이 완료되었습니다');
+        history.push('/login');
+    };
+
+    const handleChange = useCallback(
+        (e) => {
+            const { value, name } = e.target;
+            setUserInfo({
+                ...userInfo,
+                [name]: value,
+            });
+        },
+        [userInfo]
+    );
 
     return (
         <>
             <form onSubmit={handleSubmit} action="" className="signup-form">
                 <div className="container">
                     <h1>회원가입</h1>
-                    <p>Please fill in this htmlForm to create an account.</p>
+                    <p>Please fill in this Form to create an account.</p>
                     <hr />
                     <label htmlFor="id">
                         <b>ID</b>
@@ -17,7 +47,9 @@ const Signup = () => {
                     <input
                         type="text"
                         placeholder="Enter ID"
-                        name="id"
+                        name="username"
+                        value={userInfo.username}
+                        onChange={handleChange}
                         required
                     />
                     <label htmlFor="psw">
@@ -26,16 +58,9 @@ const Signup = () => {
                     <input
                         type="password"
                         placeholder="Enter Password"
-                        name="psw"
-                        required
-                    />
-                    <label htmlFor="psw-repeat">
-                        <b>Repeat Password</b>
-                    </label>
-                    <input
-                        type="password"
-                        placeholder="Repeat Password"
-                        name="psw-repeat"
+                        name="password"
+                        value={userInfo.password}
+                        onChange={handleChange}
                         required
                     />
                     <label htmlFor="email">
@@ -45,6 +70,8 @@ const Signup = () => {
                         type="text"
                         placeholder="Enter Email"
                         name="email"
+                        value={userInfo.email}
+                        onChange={handleChange}
                         required
                     />
                     <label htmlFor="Name">
@@ -54,6 +81,8 @@ const Signup = () => {
                         type="text"
                         placeholder="Enter Name"
                         name="name"
+                        value={userInfo.name}
+                        onChange={handleChange}
                         required
                     />
                     <div className="clearfix">

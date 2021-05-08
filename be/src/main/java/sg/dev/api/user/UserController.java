@@ -26,6 +26,7 @@ public class UserController {
             @ApiResponse(code=403, message = "승인거절"),
             @ApiResponse(code=422, message = "중복된 username")})
     public ResponseEntity<String> signup(@ApiParam("Signup user") @RequestBody UserDto userDto){
+        log.info("회원가입 시도");
         return ResponseEntity.ok(userService.signup(modelMapper.map(userDto, User.class)));
     }
 

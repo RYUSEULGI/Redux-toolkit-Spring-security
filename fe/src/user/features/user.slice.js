@@ -6,8 +6,13 @@ export const getUserList = createAsyncThunk('users/findAll', async () => {
     return res.data;
 });
 
-export const postSiginin = createAsyncThunk('users/siginin', async () => {
+export const userLogin = createAsyncThunk('users/siginin', async () => {
     const res = await UserService.siginin();
+    return res.data;
+});
+
+export const userSignup = createAsyncThunk('users/siginup', async (arg) => {
+    const res = await UserService.signup(arg);
     return res.data;
 });
 
@@ -17,6 +22,9 @@ const userSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(getUserList.fulfilled, (state, { payload }) => {
+            return [...payload];
+        });
+        builder.addCase(userSignup.fulfilled, (state, { payload }) => {
             return [...payload];
         });
     },

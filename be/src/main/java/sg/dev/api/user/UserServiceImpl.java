@@ -33,6 +33,7 @@ public class UserServiceImpl implements UserService{
             list.add(Role.USER);
             user.setRoles(list);
             userRepo.save(user);
+            log.info("user" + user);
             return provider.createToken(user.getUsername(), user.getRoles());
         }else{
             throw new SecurityRuntimeException("중복된 username", HttpStatus.UNPROCESSABLE_ENTITY);

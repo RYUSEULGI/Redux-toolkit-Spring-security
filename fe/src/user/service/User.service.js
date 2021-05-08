@@ -3,6 +3,7 @@ import axios from 'axios';
 const SERVER = 'http://localhost:8080/users';
 
 const getList = () => axios.get(`${SERVER}/findAll`);
-const siginin = () => axios.post(`${SERVER}/signup`, {});
+const signup = (payload) => axios.post(`${SERVER}/signup`, payload);
 
-export default { getList, siginin };
+/* eslint import/no-anonymous-default-export: [2, {"allowObject": true}] */
+export default { getList, signup };
