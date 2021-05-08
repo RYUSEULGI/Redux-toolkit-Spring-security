@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { userLogin } from 'user/features/user.slice';
+import { unwrapResult } from '@reduxjs/toolkit';
 import 'user/style/Login.css';
 
 const Login = () => {
@@ -16,10 +17,16 @@ const Login = () => {
         console.log('로그인');
         e.preventDefault();
         console.log(login);
-        dispatch(userLogin(setLogin));
+        dispatch(userLogin(login)).then(unwrapResult);
     };
 
-    const handleChange = () => {};
+    const handleChange = (e) => {
+        const { value, name } = e.target;
+        setLogin({
+            ...login,
+            [name]: value,
+        });
+    };
 
     return (
         <>
@@ -39,7 +46,8 @@ const Login = () => {
                         type="text"
                         placeholder="Enter ID"
                         name="username"
-                        onClick={handleChange}
+                        value={login.username}
+                        onChange={handleChange}
                         required
                     />
                     <label htmlFor="psw">
@@ -49,7 +57,8 @@ const Login = () => {
                         type="password"
                         placeholder="Enter Password"
                         name="password"
-                        onClick={handleChange}
+                        value={login.password}
+                        onChange={handleChange}
                         required
                     />
                     <button onClick={handleClick} type="submit">

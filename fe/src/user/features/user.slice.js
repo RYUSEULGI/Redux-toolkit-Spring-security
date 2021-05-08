@@ -6,13 +6,15 @@ export const getUserList = createAsyncThunk('users/findAll', async () => {
     return res.data;
 });
 
-export const userLogin = createAsyncThunk('users/siginin', async () => {
-    const res = await UserService.siginin();
+export const userSignup = createAsyncThunk('users/siginup', async (arg) => {
+    const res = await UserService.signup(arg);
     return res.data;
 });
 
-export const userSignup = createAsyncThunk('users/siginup', async (arg) => {
-    const res = await UserService.signup(arg);
+export const userLogin = createAsyncThunk('users/siginin', async (arg) => {
+    console.log('----user.slice userLogin----');
+    console.log(arg);
+    const res = await UserService.signin(arg);
     return res.data;
 });
 
@@ -26,6 +28,9 @@ const userSlice = createSlice({
         });
         builder.addCase(userSignup.fulfilled, (state, { payload }) => {
             return [...payload];
+        });
+        builder.addCase(userLogin.fulfilled, (state, { payload }) => {
+            console.log('=======userLogin.funfilled========');
         });
     },
 });

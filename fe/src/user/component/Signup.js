@@ -2,8 +2,8 @@ import React, { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { userSignup } from 'user/features/user.slice';
 import { unwrapResult } from '@reduxjs/toolkit';
-import 'user/style/Signup.css';
 import { useHistory } from 'react-router';
+import 'user/style/Signup.css';
 
 const Signup = () => {
     const dispatch = useDispatch();
