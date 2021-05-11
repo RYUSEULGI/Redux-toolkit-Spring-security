@@ -13,7 +13,11 @@ export const userSignup = createAsyncThunk('users/siginup', async (arg) => {
 
 export const userLogin = createAsyncThunk('users/siginin', async (arg) => {
     const res = await UserService.signin(arg);
-    return res.data;
+    if (res.data.token === 'Wrong password') {
+        alert('비밀번호를 다시 입력해주세요');
+    } else {
+        return res.data;
+    }
 });
 
 const userSlice = createSlice({

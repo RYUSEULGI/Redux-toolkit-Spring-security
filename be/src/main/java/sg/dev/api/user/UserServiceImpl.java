@@ -29,11 +29,15 @@ public class UserServiceImpl implements UserService{
     public String signup(User user) {
         if(!userRepo.existsByUsername(user.getUsername())){
             user.setPassword(passwordEncoder.encode(user.getPassword()));
+
             List<Role> list = new ArrayList<>();
+
             list.add(Role.USER);
             user.setRoles(list);
             userRepo.save(user);
+
             log.info("user" + user);
+
             return provider.createToken(user.getUsername(), user.getRoles());
         }else{
             throw new SecurityRuntimeException("중복된 username", HttpStatus.UNPROCESSABLE_ENTITY);
@@ -44,11 +48,12 @@ public class UserServiceImpl implements UserService{
     public UserDto signin(User user) {
         try{
             UserDto userDto = modelMapper.map(user, UserDto.class);
-            userDto.setToken(
-                    (passwordEncoder.matches(user.getPassword(), userRepo.findByUsername(user.getUsername()).get().getPassword()))
-                            ?provider.createToken(user.getUsername(), userRepo.findByUsername(user.getUsername()).get().getRoles())
-                            : "Wrong password"
-            );
+
+            String token = (passwordEncoder.matches(user.getPassword(), userRepo.findByUsername(user.getUsername()).get().getPassword()))
+                    ?provider.createToken(user.getUsername(), userRepo.findByUsername(user.getUsername()).get().getRoles())
+                    : "Wrong password";
+
+            userDto.setToken(token);
             return userDto;
         }catch(Exception e){
             throw new SecurityRuntimeException("유효하지 않은 아이디 / 비밀번호", HttpStatus.UNPROCESSABLE_ENTITY);

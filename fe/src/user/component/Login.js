@@ -16,8 +16,7 @@ const Login = () => {
 
     const handleClick = (e) => {
         e.preventDefault();
-        dispatch(userLogin(login)).then(unwrapResult);
-        history.push('/');
+        dispatch(userLogin(login));
     };
 
     const handleChange = (e) => {
