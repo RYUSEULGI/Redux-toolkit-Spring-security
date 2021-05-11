@@ -43,12 +43,12 @@ public class UserServiceImpl implements UserService{
     @Override
     public UserDto signin(User user) {
         try{
-            User loginedUser = userRepo.signin(user.getUsername(), user.getPassword());
             UserDto userDto = modelMapper.map(user, UserDto.class);
-            String token = provider.createToken(user.getUsername(), userRepo.findByUsername(user.getUsername()).getRoles());
-            log.info("*******ISSUED TOKEN********", token);
-            userDto.setToken(token);
-
+            userDto.setToken(
+                    (passwordEncoder.matches(user.getPassword(), userRepo.findByUsername(user.getUsername()).get().getPassword()))
+                            ?provider.createToken(user.getUsername(), userRepo.findByUsername(user.getUsername()).get().getRoles())
+                            : "Wrong password"
+            );
             return userDto;
         }catch(Exception e){
             throw new SecurityRuntimeException("유효하지 않은 아이디 / 비밀번호", HttpStatus.UNPROCESSABLE_ENTITY);
