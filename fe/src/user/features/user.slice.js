@@ -20,7 +20,10 @@ export const userLogin = createAsyncThunk('users/siginin', async (arg) => {
 
 const userSlice = createSlice({
     name: 'users',
-    initialState: [],
+    initialState: {
+        isLoggedIn: false,
+        loginFail: '',
+    },
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(getUserList.fulfilled, (state, { payload }) => {
@@ -29,8 +32,13 @@ const userSlice = createSlice({
         builder.addCase(userSignup.fulfilled, (state, { payload }) => {
             return [...payload];
         });
-        builder.addCase(userLogin.fulfilled, (state, { payload }) => {
+        builder.addCase(userLogin.fulfilled, (state) => {
             console.log('=======userLogin.funfilled========');
+            state.isLoggedIn = true;
+        });
+        builder.addCase(userLogin.rejected, (state, { payload }) => {
+            console.log('=====userLogin.rejected======');
+            state.loginFail = payload;
         });
     },
 });
