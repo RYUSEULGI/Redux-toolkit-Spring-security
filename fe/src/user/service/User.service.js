@@ -6,7 +6,7 @@ const getList = () => axios.get(`${SERVER}/findAll`);
 const signup = (payload) => axios.post(`${SERVER}/signup`, payload);
 const signin = (payload) => {
     const api = axios({
-        url: `${SERVER}/siginin`,
+        url: 'http://localhost:8080/users/signin',
         method: 'post',
         headers: {
             'Content-type': 'application/json',

@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { userLogin } from 'user/features/user.slice';
 import { unwrapResult } from '@reduxjs/toolkit';
 import 'user/style/Login.css';
 
 const Login = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const [login, setLogin] = useState({
         username: '',
@@ -14,10 +15,9 @@ const Login = () => {
     });
 
     const handleClick = (e) => {
-        console.log('로그인');
         e.preventDefault();
-        console.log(login);
         dispatch(userLogin(login)).then(unwrapResult);
+        history.push('/');
     };
 
     const handleChange = (e) => {

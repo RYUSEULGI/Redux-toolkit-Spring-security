@@ -12,8 +12,6 @@ export const userSignup = createAsyncThunk('users/siginup', async (arg) => {
 });
 
 export const userLogin = createAsyncThunk('users/siginin', async (arg) => {
-    console.log('----user.slice userLogin----');
-    console.log(arg);
     const res = await UserService.signin(arg);
     return res.data;
 });
@@ -34,11 +32,9 @@ const userSlice = createSlice({
         });
         builder.addCase(userLogin.fulfilled, (state) => {
             console.log('=======userLogin.funfilled========');
-            state.isLoggedIn = true;
         });
         builder.addCase(userLogin.rejected, (state, { payload }) => {
             console.log('=====userLogin.rejected======');
-            state.loginFail = payload;
         });
     },
 });
